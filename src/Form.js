@@ -8,7 +8,7 @@ class Form extends React.Component {
   handleSubmit = async (event) => {
       event.preventDefault();
       let res = await axios.get(`https://api.github.com/users/${this.state.userName}`);
-      console.log(res.data);
+      this.props.onSubmit(res.data)
   }
 render(){
   return (
@@ -16,7 +16,7 @@ render(){
       <input type="text" 
       value={this.state.userName}
       onChange={event => this.setState({userName: event.target.value})}
-      placeholder="GitHub username" 
+      placeholder="GitHub username"
       ref={this.userNameInput}
       required/>
       <button> Add Card </button>

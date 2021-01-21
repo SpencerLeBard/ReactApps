@@ -17,11 +17,16 @@ class App extends React.Component {
 state = {
   profile: testData,
 };
+addNewProfile = (profileData) => {
+  this.setState(prevState => ({
+    profile: [...prevState.profile , profileData]
+  }))
+}
   render(){
     return (
       <div>
     <div className="header">{this.props.title} </div>
-    <Form />
+    <Form onSubmit={this.addNewProfile} />
     <CardList profile={this.state.profile}/>
     </div>
     );
